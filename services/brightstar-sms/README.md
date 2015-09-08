@@ -1,6 +1,6 @@
 # brightstar-sms
 
-Reads message from sources (file, zeromq, rabbitmq etc.) and sends them to recipient
+Reads messages from sources (file, zeromq, rabbitmq etc.) and sends them to recipient.
 
 Copyright © 2015 Jonathan Pelletier
 
