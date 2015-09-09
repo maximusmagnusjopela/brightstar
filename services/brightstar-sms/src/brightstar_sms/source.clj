@@ -15,7 +15,10 @@
 
 (defmulti msg-seq msg-seq-dispatch)
 
-;(defmethod msg-seq :file [options]
-;  (let [file (:file options)]
-;    (line-seq
+(defmethod msg-seq :file [options]
+  (let [file (:file options)]
+    (line-seq (io/reader file))))
+
+(defmethod msg-seq :default [options]
+  [])
 
