@@ -21,6 +21,6 @@
         (System/exit -1)))
     (let [sender-fn (sender/sender options)]
       (doseq [msg (source/msg-seq options)]
-        (sender-fn msg)))
+        (println (sender-fn msg))))
     (System/exit 0)))
 
