@@ -1,9 +1,13 @@
 (ns brightstar-sms.core
-  (:require [clojure.tools.cli :refer [parse-opts]])
+  (:require [clojure.tools.cli :refer [parse-opts]]
+            [brightstar-sms.sender :as sender]
+            [brightstar-sms.source :as source])
   (:gen-class))
 
 (def cli-opts
-  [["-f" "--file FILE" "json file containing the messages to send"]])
+  [["-f" "--file FILE" "json file containing the messages to send"]
+   ["-c" "--config CONF" "path to file containing the configuration"
+    :default "conf.json"]])
 
 (defn -main
   " Read all message from a source and sends them to the recipient via sms"
@@ -13,16 +17,8 @@
       (doseq [e errors]
         (println e)
         (System/exit -1)))
-    (let [msg-source (source/source options)
-          sender-fn (sender/sender options)]
-      (loop [msg (source/read! msg-source)]
-        (when msg
-          (sender-fn msg)
-          (recur (source/read! msg-source))))
-      (println "Source has no more message to be sent")
-      (System/exit 0))))
+    (let [sender-fn (sender/sender options)]
+      (doseq [msg (source/msg-seq options)]
+        (sender-fn msg)))
+    (System/exit 0)))
 
-
-          
-
-    

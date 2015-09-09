@@ -1,3 +1,3 @@
 # Introduction to brightstar-register
 
-TODO: write [great documentation](http://jacobian.org/writing/what-to-write/)
+brightstar web based queue registration service
