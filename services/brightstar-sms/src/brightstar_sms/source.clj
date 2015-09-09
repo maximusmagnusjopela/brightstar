@@ -5,7 +5,10 @@
 ;  /_.___/_/  /_/\__, /_/ /_/\__/____/\__/\__,_/_/     
 ;               /____/                                 
 (ns brightstar-sms.source
-  (:require [clojure.java.io :as io]))
+  (:require [clojure.java.io :as io]
+            [clojure.data.csv :as csv]))
+
+(defrecord Sms [to from body])
 
 (defn msg-seq-dispatch
   [opts]
@@ -17,7 +20,8 @@
 
 (defmethod msg-seq :file [options]
   (let [file (:file options)]
-    (line-seq (io/reader file))))
+    (for [l (csv/read-csv (io/reader file)) 
+          :let [[to from body] l]] (Sms. to from body))))
 
 (defmethod msg-seq :default [options]
   [])
