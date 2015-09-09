@@ -1,8 +1,20 @@
-(ns brightstar-sms.sender)
+(ns brightstar-sms.sender
+  (:require [twilio.core :as twilio]))
 
-;TODO: change this dummy function
+(defn twilio-sender 
+  [sid auth-token]
+  (fn 
+    [msg] 
+    (println "sending" msg)
+    (twilio/with-auth sid auth-token 
+      (twilio/send-sms msg))))
+
+;TODO: this will be a multimethod so as to be able to implement multiple sms service provider.
+;for the moment it's just twilio.
 (defn sender
   [options]
-  (fn [msg] (println "sending:" msg)))
+  (let [{:keys [sid auth-token]} options]
+    (twilio-sender sid auth-token)))
 
 
+ 

@@ -8,7 +8,7 @@
   (:require [clojure.java.io :as io]
             [clojure.data.csv :as csv]))
 
-(defrecord Sms [to from body])
+(defrecord Sms [To From Body])
 
 (defn msg-seq-dispatch
   [opts]

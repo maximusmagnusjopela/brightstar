@@ -7,7 +7,9 @@
 (def cli-opts
   [["-f" "--file FILE" "json file containing the messages to send"]
    ["-c" "--config CONF" "path to file containing the configuration"
-    :default "conf.json"]])
+    :default "conf.json"]
+   ["-s" "--sid SID" "twilio sender ID"]
+   ["-a" "--auth-token TOKEN" "twilio authentication token"]])
 
 (defn -main
   " Read all message from a source and sends them to the recipient via sms"
