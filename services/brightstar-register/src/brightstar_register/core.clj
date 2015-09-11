@@ -1,7 +1,9 @@
 (ns brightstar-register.core
+  (:require [org.httpkit.server :refer [run-server]]
+            [brightstar-register.routes :refer [brightstar-routes]])
   (:gen-class))
 
 (defn -main
-  "I don't do a whole lot ... yet."
+  "brightstar registration service"
   [& args]
-  (println "Hello, World!"))
+  (run-server brightstar-routes {:port 8080}))
