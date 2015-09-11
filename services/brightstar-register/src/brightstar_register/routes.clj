@@ -1,0 +1,2 @@
+(ns brighstar-register.routes)
+
