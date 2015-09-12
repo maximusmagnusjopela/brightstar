@@ -1,8 +1,9 @@
-(ns brightstar-register.handlers)
+(ns brightstar-register.handlers
+  (:require [brightstar-register.views :as views]))
 
 (defn index
   [request]
-  "index")
+  (views/registration))
 
 (defn register
   [request]
