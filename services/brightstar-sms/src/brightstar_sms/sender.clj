@@ -5,7 +5,6 @@
   [sid auth-token]
   (fn 
     [msg] 
-    (println "sending" msg)
     (twilio/with-auth sid auth-token 
       (twilio/send-sms msg))))
 
