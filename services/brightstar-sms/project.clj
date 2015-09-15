@@ -5,6 +5,7 @@
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [org.clojure/tools.cli "0.3.3"]
                  [org.clojure/data.csv "0.1.3"]
+                 [org.clojure/core.async "0.1.346.0-17112a-alpha"]
                  [ring/ring-codec "1.0.0"]
                  [com.novemberain/langohr "3.3.0"]
                  [twilio-api "1.0.1"]]
