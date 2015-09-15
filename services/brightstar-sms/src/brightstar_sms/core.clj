@@ -9,7 +9,10 @@
    ["-c" "--config CONF" "path to file containing the configuration"
     :default "conf.json"]
    ["-s" "--sid SID" "twilio sender ID"]
-   ["-a" "--auth-token TOKEN" "twilio authentication token"]])
+   ["-a" "--auth-token TOKEN" "twilio authentication token"]
+   ["-C" "--conn-str CONNSTR" "connection string to message source"]
+   ["-q" "--queue-name QNAME" "queue name where the sms are posted (used with amqp source)"
+    :default ]])
 
 (defn -main
   " Read all message from a source and sends them to the recipient via sms"

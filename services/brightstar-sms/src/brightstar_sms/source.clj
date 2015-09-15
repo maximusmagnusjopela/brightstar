@@ -8,20 +8,16 @@
   (:require [ring.util.codec :refer [form-decode]]
             [clojure.walk :refer [keywordize-keys]]
             [clojure.java.io :as io]
-            [clojure.data.csv :as csv]))
+            [clojure.data.csv :as csv]
+            [clojure.core.async :as async :refer :all]
+            [langohr.core :as rmq]
+            [langohr.channel :as lch]
+            [langohr.queue :as lq]
+            [langohr.consumers :as lc]
+            [langohr.basic :as lb]))
 
 (defrecord Sms [To From Body])
 
-(defn conn-str-params
-  "Returns a map of the necessary parameters to connect to the source encoded in conn-str"
-  [conn-str]
-  (let [uri (java.net.URI. conn-str)]
-    (let [hostname (.getHost uri)
-          queue (-> uri .getPath io/file .getName)
-          port (let [p (.getPort uri)] (if (not= -1 p) p))
-          params (-> uri .getQuery form-decode keywordize-keys)]
-      (assoc params :hostname hostname :queue queue :port port))))
-      
 (defn msg-seq-dispatch
   [opts]
   (cond 
@@ -37,9 +33,12 @@
           :let [[to from body] l]] (Sms. to from body))))
 
 (defmethod msg-seq :amqp [options]
-  nil)
-
-
+  (let [conn (-> :conn-str options rmq/settings-from rmq/connect)
+        ch (lch conn)
+        qname (:queue-name options)]
+    (let [aysnc-ch (async/ch)]
+      (lq/declare ch qname {:durable true :auto-delete false})
+      nil)))
 
 (defmethod msg-seq :default [options]
   [])
