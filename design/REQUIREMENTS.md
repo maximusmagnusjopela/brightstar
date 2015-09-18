@@ -8,11 +8,12 @@ For the first prototype, the system is required to (client side requirement):
 
 1. Allow a client to register to the queue with a web browser client.
 2. Notify the client of it's entry in the queue by sms.
-    a) The sms message must include the current position of the client in the queue.
-    b) The sms message must include the expected waiting time in the queue.
+    a) The sms message must include the expected waiting time in the queue.
 3. Notify the client when is remaining expected time to wait if less then a certain configurable amount of time.
-4. Notify the client when is turn to be service has come.
+4. Notify the client when is turn to be serviced has come.
     a) the sms message must properly route the client to where he will be serviced.
+5. Allow the client to send sms to the system to receive update.
+6. Allow the client to send sms to the system to leave the queue.
 
 The system is also required to (service side requirement, all communication from clerk to system happen via web
 browser):
