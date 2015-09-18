@@ -3,11 +3,14 @@
 
 (defn base
   "Returns a basic, reusable html5 template"
-  [body title]
-  [:html
-   [:head
-    [:title title]]
-   [:body body]])
+  ([body title styles] 
+    [:html
+     [:head
+      [:title title]
+      (for [s styles] [:link {:rel "stylesheet" :type "text/css" :href (str "/static/" s)}])
+     [:body body]]])
+  ([body title]
+   (base body title [])))
 
 (defn registration-form
   [welcome-message]

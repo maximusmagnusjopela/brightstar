@@ -24,4 +24,6 @@
         (println e)
         (System/exit -1)))
     (let [{:keys [port]} options]
+      (println (str "Server listening on port:" port))
       (run-server brightstar-routes {:port port}))))
+
