@@ -7,6 +7,6 @@
   "Build the registration page"
   []
   (-> (registration-form "Welcome to brightstar")
-      (base "brighstar register")
+      (base "brighstar register" ["css/base.css"])
       html))
 
