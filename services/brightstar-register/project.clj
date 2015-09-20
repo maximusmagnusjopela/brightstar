@@ -6,7 +6,8 @@
                  [org.clojure/tools.cli "0.3.3"]
                  [http-kit "2.1.18"]
                  [compojure "1.4.0"]
-                 [hiccup "1.0.5"]]
+                 [hiccup "1.0.5"]
+                 [cheshire "5.5.0"]]
   :main ^:skip-aot brightstar-register.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
