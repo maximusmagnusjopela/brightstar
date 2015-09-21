@@ -19,6 +19,9 @@ The confirmation code page should include a resend button.
 If the client does not enter the confirmation code before a configurable amount of time, the client page must return
 to the index page (the font page)
 
+### Internationalization
+It should be easy to support multiple languages through the application
+
 ### Access to web form registration interface
 The web form will be publicly acessible. Nevertheless, the web form interface must implement IP access control
 for testing purposes.

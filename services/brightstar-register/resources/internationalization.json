@@ -1,0 +1,15 @@
+{
+    "registration": {
+        "en":"registration",
+        "fr":"inscription"},
+    "name": {
+        "en":"name",
+        "fr":"nom"}
+    "submit": {
+        "en":"submit",
+        "fr":"soumettre"
+    }
+}
+
+
+
